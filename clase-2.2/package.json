@@ -1,0 +1,23 @@
+{
+  "name": "clase-2.2",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.js",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "parcel build",
+    "watch": "parcel watch",
+    "start": "nodemon dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}
