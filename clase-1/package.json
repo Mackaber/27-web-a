@@ -1,0 +1,27 @@
+{
+  "name": "clase-1",
+  "version": "1.0.0",
+  "description": "es un ejemplo para la clase",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mackaber/27-web-a.git"
+  },
+  "keywords": [
+    "clase",
+    "ejemplo"
+  ],
+  "author": "Mackaber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mackaber/27-web-a/issues"
+  },
+  "homepage": "https://github.com/Mackaber/27-web-a#readme",
+  "dependencies": {
+    "data-structures-again": "^3.3.0",
+    "underscore": "^1.13.6"
+  }
+}
