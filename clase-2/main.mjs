@@ -1,4 +1,4 @@
-const moment = require("moment")
+import moment from "moment"
 
 console.log("Cuantos días faltan para mi cumpleaños?")
 //let christmas = moment('2023-12-25T00:00:00Z', moment.ISO_8601);
