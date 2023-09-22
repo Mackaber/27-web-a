@@ -1,10 +1,10 @@
 /* console.log("Inicio");
 
-setTimeout(() => {
+set */Timeout(() => {
   console.log("Timeout");
 });
 
-console.log("Fin"); */
+console.log("Fin");
 
 /* function sms(str) {
   console.log(str);
@@ -19,10 +19,10 @@ console.log("Fin"); */
   console.log(param);
 }, "nuevo mensaje"); */
 
-/* const btn = document.querySelector("button");
+const btn = document.querySelector("button");
 btn.addEventListener("click", (event) => {
   console.log(event.target);
-}); */
+});
 
 //Call Stack
 // LIFO -> Last In, First Out
