@@ -1,1 +1,3 @@
-export const baseUrl = "https://dummyjson.com/users";
+export const endpoint = "https://dummyjson.com";
+
+export const baseUrl = ({ path, limit }) => `${endpoint}${path}?limit=${limit}`;
