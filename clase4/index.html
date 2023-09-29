@@ -15,8 +15,8 @@
   </head>
   <body>
     <main id="app" class="container py-4">
-      <h2 class="text-center mb-4">Buscar el clima</h2>
-      <form class="card p-3">
+      <h2 class="text-center">Buscar el clima</h2>
+      <form class="card p-3 my-4">
         <div class="mb-3 input-group input-group-lg">
           <select class="form-select select-dinamico" name="pais"></select>
         </div>
@@ -26,10 +26,12 @@
             type="search"
             class="form-control"
             placeholder="Ciudad"
+            required
           />
           <button class="btn btn-primary">Buscar</button>
         </div>
       </form>
+      <section class="weather-country row justify-content-center"></section>
     </main>
   </body>
 </html>

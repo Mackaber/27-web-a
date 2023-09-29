@@ -1,18 +1,25 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
-import { endpointPaises } from "./src/config";
+import { endpointClima, endpointPaises } from "./src/config";
 import { orderBy } from "lodash";
 
 const app = document.getElementById("app");
 const form = app.querySelector("form");
 const selectDom = app.querySelector(".select-dinamico");
+const weatherDom = app.querySelector(".weather-country");
 
-// TODO: Cargar los paises en el select
+const fetchData = (url) => {
+  return fetch(url).then((data) => {
+    if (!data.ok) throw new Error(data.status);
+    return data.json();
+  });
+};
+
+// TODO: Cargar los paises en el select -> ok
 // TODO: Buscar desde la api del clima
 window.addEventListener("DOMContentLoaded", () => {
   selectDom.innerHTML = "<option disabled selected>Selecciona un pais</option>";
-  fetch(endpointPaises)
-    .then((data) => data.json())
+  fetchData(endpointPaises)
     .then((countries) => {
       const orderByNameCountries = orderBy(countries, ["name.common", ["asc"]]);
 
@@ -23,8 +30,36 @@ window.addEventListener("DOMContentLoaded", () => {
       orderByNameCountries.map(
         (country) => (selectDom.innerHTML += option(country))
       );
-    });
+    })
+    .catch(console.log);
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    const pais = event.target.pais.value;
+    const ciudad = event.target.ciudad.value;
+
+    fetchData(endpointClima({ pais, ciudad }))
+      .then((weather) => {
+        const cardWeather = ({
+          name,
+          main: { temp, temp_max, temp_min },
+          weather,
+        }) => `
+        <article class="col-3">
+          <div class="card text-center">
+            <img class="card-img-top bg-dark b-rounded" src="https://openweathermap.org/img/wn/${weather[0].icon}@2x.png" alt="${name}" />
+            <div class="card-body">
+              <h2 class="card-text m-0">${name}</h2>
+              <h3 class="card-title m-0">${temp}</h3>
+              <p class="card-text m-0">${temp_min}</p>
+              <p class="card-text m-0">${temp_max}</p>
+            </div>
+          </div>
+        </article>
+        `;
+        weatherDom.innerHTML = cardWeather(weather);
+        console.log(weather.main);
+      })
+      .catch(console.log);
   });
 });
