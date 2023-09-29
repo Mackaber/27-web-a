@@ -17,16 +17,12 @@
     <main id="app" class="container py-4">
       <h2 class="text-center mb-4">Buscar el clima</h2>
       <form class="card p-3">
-        <div class="select-dinamico mb-3 input-group input-group-lg">
-          <select class="form-select">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
+        <div class="mb-3 input-group input-group-lg">
+          <select class="form-select select-dinamico" name="pais"></select>
         </div>
         <div class="input-group input-group-lg">
           <input
+            name="ciudad"
             type="search"
             class="form-control"
             placeholder="Ciudad"
