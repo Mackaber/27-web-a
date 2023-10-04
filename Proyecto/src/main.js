@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { buscarPokemon } from "./pokeapiService";
 
 const app = document.getElementById("app");
@@ -5,6 +6,20 @@ const form = app.querySelector("#busqueda");
 const keyboard_q = app.querySelector("#keyboard_q");
 const input_nombre = app.querySelector("#input_nombre");
 const container = app.querySelector("#container");
+
+const display_pokemon = (name,type,image_url) => {
+  return `
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${image_url}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text">
+            <span><label>Tipo: </label>${type}</span>
+          </p>
+        </div>
+      </div>
+      `
+} 
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -21,18 +36,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const fetchData = async () => {
       let pokemon = await buscarPokemon(e.target.nombre.value)
       console.log(pokemon)
-      let pokemonResultDom = document.createElement("div")
+      
 
-      pokemonResultDom.innerHTML = `
-        <div>
-          <h5>${pokemon.name}</h5>
-          <p>
-            <span><label>Tipo principal: </label>${pokemon.types[0].type.name}</span>
-          </p>
-        <div>
-      `
+      container.innerHTML = display_pokemon(pokemon.name, 
+        pokemon.types[0].type.name,
+        pokemon.sprites.other["official-artwork"].front_default)
 
-      container.appendChild(pokemonResultDom)
     }
     /*
     Con .then
